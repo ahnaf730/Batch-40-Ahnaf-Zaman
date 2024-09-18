@@ -2,6 +2,7 @@ package com.generic;
 
 import org.openqa.selenium.WebDriver;
 
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -19,9 +20,10 @@ public class LumaLogin {
 	public void getLogin() {
 
 		WebDriverManager.chromedriver().setup();
-		ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.addArguments("--headless");
-		WebDriver driver = new ChromeDriver(chromeOptions);
+		WebDriver driver = new ChromeDriver();
+//		ChromeOptions chromeOptions = new ChromeOptions();
+//		chromeOptions.addArguments("--headless");
+//		WebDriver driver = new ChromeDriver(chromeOptions);
 
 		Actions ac = new Actions(driver);
 
