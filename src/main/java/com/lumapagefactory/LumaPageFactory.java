@@ -81,6 +81,33 @@ public class LumaPageFactory {
 	@FindBy (xpath = "//*[@class='action-primary action-accept']")
 	private WebElement confirmokbutton;
 	
+	@FindBy (xpath = "(//*[@class='level-top ui-corner-all'])[4]")
+	private WebElement gear_menu;
+	
+	@FindBy (xpath = "(//*[@class='ui-corner-all'])[17]")
+	private WebElement bags_gear;
+	
+	@FindBy (xpath = "//*[@alt='Overnight Duffle']")
+	private WebElement overnight_duffle;
+	
+	
+	@FindBy (xpath = "//a[@id='tab-label-reviews-title']")
+	private WebElement review_overnight_duffle;
+	
+	
+	
+
+	public WebElement getGear_menu() {
+		return gear_menu;
+	}
+
+	public WebElement getBags_gear() {
+		return bags_gear;
+	}
+
+	public WebElement getOvernight_duffle() {
+		return overnight_duffle;
+	}
 
 	public WebElement getConfirmokbutton() {
 		return confirmokbutton;
