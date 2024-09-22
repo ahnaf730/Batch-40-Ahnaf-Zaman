@@ -1,9 +1,11 @@
-package com.generic;
+package com.testng;
+
 
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import com.lumapagefactory.LumaPageFactory;
 import com.utilities.ConfigFiles;
@@ -13,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class LumaMensJackets {
 
 	LumaPageFactory lpf;
-
+@Test
 	public void getLumaMensJackets() {
 
 		WebDriverManager.chromedriver().setup();
