@@ -2,6 +2,11 @@ com/utilities/Highlight.class
 com/generic/LumaGear.class
 com/utilities/Screenshot.class
 com/generic/LumaLogin.class
+com/testng/PracticeTestNG.class
+com/testng/LumaGear.class
+com/testng/LumaLogin.class
 com/lumapagefactory/LumaPageFactory.class
+com/testng/LumaMensJackets.class
 com/generic/LumaMensJackets.class
 com/utilities/ConfigFiles.class
+com/testng/PracticeAnnotation.class

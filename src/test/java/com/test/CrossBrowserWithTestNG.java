@@ -1,11 +1,12 @@
-package com.generic;
+package com.test;
 
 import org.openqa.selenium.WebDriver;
-
-
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import com.lumapagefactory.LumaPageFactory;
 import com.utilities.ConfigFiles;
@@ -13,24 +14,32 @@ import com.utilities.Highlight;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class LumaLogin {
+public class CrossBrowserWithTestNG {
 
+	WebDriver driver;
 	LumaPageFactory lpf;
+	Actions ac;
 
-	public void getLogin() {
+	@Test
+	@Parameters("browser")
+	public void getCrossBrowser(String browser) {
 
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-//		ChromeOptions chromeOptions = new ChromeOptions();
-//		chromeOptions.addArguments("--headless");
-//		WebDriver driver = new ChromeDriver(chromeOptions);
+		if (browser.equalsIgnoreCase("Chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
 
-		Actions ac = new Actions(driver);
+			System.out.println("Browser Opened=" + browser);
+		} else if (browser.equalsIgnoreCase("Firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 
+			System.out.println("Browser Opened=" + browser);
+		}
 		driver.manage().window().maximize();
 		driver.navigate().to(ConfigFiles.getConfigValue("URL"));
 
 		lpf = new LumaPageFactory(driver);
+		ac = new Actions(driver);
 
 		ac.click(lpf.getSigninbtn_homepage()).perform();
 
@@ -44,7 +53,6 @@ public class LumaLogin {
 			System.out.println("Login Successful!");
 
 		}
-		
 
 		Highlight.addColor(driver, lpf.getDropdown_menu());
 
@@ -52,11 +60,7 @@ public class LumaLogin {
 
 		ac.click(lpf.getSignout_homepage()).perform();
 
-		if(lpf.getSigninbtn_homepage().isDisplayed()) {
-			
-		System.out.println("Logged out");
-		
-		}
+		Assert.assertTrue(lpf.getSigninbtn_homepage().isDisplayed(), "Logout successful");
 
 		driver.quit();
 
